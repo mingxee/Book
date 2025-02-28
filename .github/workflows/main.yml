@@ -1,0 +1,45 @@
+name: Deploy to GitHub Page
+
+on:
+  push:
+    branches:
+      - main # Change to your default branch if it's not "main"
+
+permissions:
+  contents: write # Ensure write access is granted
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.12.0' # Use a stable Node.js version
+          cache: 'npm'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Fix audit warnings (optional)
+      #- name: Fix vulnerabilities
+      #  run: npm audit fix --force
+
+      # Step 5: Build the project
+      - name: Build the project
+        run: npm run build
+
+      # Step 6: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
