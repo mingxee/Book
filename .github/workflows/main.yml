@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.12.0' # Use a stable Node.js version
+          node-version: '18.20.3' # Use a stable Node.js version
           cache: 'npm'
 
       # Step 3: Install dependencies
