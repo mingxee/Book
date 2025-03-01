@@ -30,8 +30,8 @@ jobs:
         run: npm install
 
       # Step 4: Fix audit warnings (optional)
-      - name: Fix vulnerabilities
-        run: npm audit fix --force
+      #- name: Fix vulnerabilities
+        #run: npm audit fix --force
 
       # Step 5: Build the project
       - name: Build the project
